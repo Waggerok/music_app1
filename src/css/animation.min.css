@@ -1,0 +1,32 @@
+@-webkit-keyframes cursor {
+  0% {
+    border-color: white;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+@keyframes cursor {
+  0% {
+    border-color: white;
+  }
+  50% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: white;
+  }
+}
+@-webkit-keyframes printed_text {
+  from {
+    width: 0;
+  }
+}
+@keyframes printed_text {
+  from {
+    width: 0;
+  }
+}/*# sourceMappingURL=animation.min.css.map */

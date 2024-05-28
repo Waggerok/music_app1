@@ -1,0 +1,247 @@
+@import 'variables.sass'
+@import 'animation.sass'
+
+body
+    background-color: $bg-color
+
+#root
+    display: flex
+    flex-direction: column
+    align-items: center
+
+.App
+    width: 800px 
+    
+.navbar
+    height: 50px
+    width: 100vw
+    display: flex
+    align-items: center
+    padding: 0 15px
+    background-color: $navbar-color
+    &__logo
+        text-decoration: none
+        color: white
+        cursor: pointer
+        transition: 1s all
+        &:hover
+            transition: 1s all
+            color: $main-color
+    &__links
+        margin-left: auto        
+        &_item
+            margin-right: 20px
+            text-decoration: none
+            color: white
+            transition: 1s all
+            &:hover
+                transition: 1s all
+                color: $main-color
+    
+
+.about
+    display: flex  
+    flex-direction: column 
+    margin-top: 30px
+    &__photo
+        &_circle
+            width: 350px
+            height: 350px
+            border-radius: 50%
+            background: url('../images/me.jpg') no-repeat
+            background-size: 350px
+            img
+                width: 100%
+    &__description
+        margin-top: 50px
+        &_text
+            font-weight: 500
+            color: white
+            width: 61ch
+            font-size: 20px
+            white-space: nowrap
+            overflow: hidden
+            border-right: 3px solid white
+            animation: cursor 0.75s step-end infinite, printed_text 3.5s steps(61)            
+    &__title
+        color: white
+        text-align: center
+    &__stack
+        margin-top: 30px
+        &_title            
+            text-align: center
+            color: white
+        &_logos
+            margin-top: 20px
+            display: flex
+            justify-content: space-around
+            align-items: center
+            margin-bottom: 10px
+            &_circle
+                width: 150px
+                height: 150px
+                border: 1px solid black
+                border-radius: 50%
+                display: flex
+                justify-content: center
+                align-items: center
+                transition: 1s all
+                &:hover
+                    transition: 1s all
+                    box-shadow: 1px 1px 10px white
+                    scale: 1.05                    
+            img
+                width: 60%
+
+    // ховер эффекты для стэка
+#html 
+    &:hover
+        border: 3px solid #fd6100
+        box-shadow: 1px 1px 10px orange            
+#css 
+    &:hover
+        border: 3px solid #095ded
+        box-shadow: 1px 1px 10px #5475ae
+
+#js
+    &:hover
+        border: 3px solid #ffe600
+        box-shadow: 1px 1px 10px orange     
+
+#react 
+    &:hover
+        border: 3px solid #00ffea
+        box-shadow: 1px 1px 10px #00ffea  
+
+.trackMenu
+    margin-top: 50px
+    width: 550px
+    height: 700px
+    border-radius: 15px
+    &__video
+        width: 100%
+        height: 680px
+        display: flex
+        overflow: hidden
+        justify-content: center
+        align-items: center
+        position: relative
+        video
+            width: 100%
+            height: 700px
+            position: absolute
+            top: 0
+            left: 0
+            object-fit: cover
+            z-index: 1
+    &__items
+        z-index: 2
+        margin-top: 50px
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        transition: 2s all
+        opacity: 0.5
+        &:hover   
+            transition: 0.5s all
+            // opacity: 0.5
+        &_image
+            width: 250px
+            height: 250px
+            img
+                width: 100%
+        &_line
+            display: flex
+            align-items: center
+            margin-top: 60px
+            input[type="range"]
+                -webkit-appearance: none
+                width: 300px
+                background: gray
+                border-radius: 10px
+                height: 3px    
+        &_line
+            input[type="range"]::-webkit-slider-thumb
+                height: 10px
+                width: 10px
+                background: white
+                appearance: none
+                cursor: pointer
+                border-radius: 50px
+            &_current-time
+                margin: 0 10px
+                color: gray
+            &_total-duration
+                margin: 0 10px
+                color: gray
+            
+        &_text
+            margin-top: 20px
+            margin-right: 150px
+            // width: 100%
+            width: 200px
+            &_name
+                font-size: 20px
+                color: white
+            &_author
+                font-size: 14px
+                color: gray
+                text-decoration: underline
+        &_btns
+            margin-top: 30px
+            display: flex
+            align-items: center
+            justify-content: space-between
+            width: 200px
+            &_previous
+                cursor: pointer
+                transition: 0.5s all
+                img
+                    transform: rotateY(180deg)
+                &:hover
+                    transition: 0.5s all
+                    transform: translateX(-5px)
+                    filter: drop-shadow(1px 1px 4px #ffffff)
+            &_play
+                cursor: pointer
+                img
+                    transition: 0.5s all
+                    &:hover
+                        transition: 0.5s all
+                        scale: 1.15
+                        filter: drop-shadow(1px 1px 5px #ffffff)
+
+            &_next
+                cursor: pointer
+                transition: 0.5s all
+                &:hover
+                    transform: translateX(5px)
+                    transition: 0.5s all
+                    filter: drop-shadow(1px 1px 4px #ffffff)
+        &_volume
+            margin-top: 30px
+            display: flex
+            align-items: center
+            cursor: pointer
+            &_btn
+                margin-right: 5px
+                img
+                    width: 50px
+                    height: 50px   
+            &_line
+                display: flex
+                input[type="range"]
+                    -webkit-appearance: none
+                    width: 250px
+                    background: gray
+                    border-radius: 10px
+                    height: 3px       
+            &_line
+                input[type="range"]::-webkit-slider-thumb
+                    height: 10px
+                    width: 10px
+                    background: white
+                    appearance: none
+                    cursor: pointer
+                    border-radius: 50px
