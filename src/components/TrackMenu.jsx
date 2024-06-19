@@ -5,8 +5,6 @@ import unMutedBtn from '../images/controls/volume.png';
 import mutedBtn from '../images/controls/muted.png';
 import play from '../images/controls/play.png';
 import pause from '../images/controls/pause.png';
-import { hover } from '@testing-library/user-event/dist/hover';
-
 
 const TrackMenu = ({tracks}) => {
 
@@ -21,7 +19,6 @@ const TrackMenu = ({tracks}) => {
     const audioRef = useRef(new Audio(tracks[currentTrack].sound)); 
 
     const [currentTime,setCurrentTime] = useState(0);
-
 
     //видео
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -115,6 +112,13 @@ const TrackMenu = ({tracks}) => {
         setVolume(audioRef.current.volume = 0);
         setIsMuted(false);
     };
+
+    //перемешивание
+
+    const refreshTracks = () => {
+        
+        return console.log(tracks[(Math.floor(Math.random() * tracks.length))])
+    }
     
     return (
         <>
@@ -169,6 +173,9 @@ const TrackMenu = ({tracks}) => {
                         </div>
                         <div className="trackMenu__items_btns_next" onClick={nextTrack}>
                             <img src={next} alt="next" />
+                        </div>
+                        <div className="trackMenu__items_btns_refresh" onClick={refreshTracks} style={{cursor: 'pointer'}}>
+                            refresh
                         </div>
                     </div>
                     <div className="trackMenu__items_volume">
