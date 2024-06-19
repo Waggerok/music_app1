@@ -114,11 +114,6 @@ const TrackMenu = ({tracks}) => {
     };
 
     //перемешивание
-
-    const refreshTracks = () => {
-        
-        return console.log(tracks[(Math.floor(Math.random() * tracks.length))])
-    }
     
     return (
         <>
@@ -173,9 +168,6 @@ const TrackMenu = ({tracks}) => {
                         </div>
                         <div className="trackMenu__items_btns_next" onClick={nextTrack}>
                             <img src={next} alt="next" />
-                        </div>
-                        <div className="trackMenu__items_btns_refresh" onClick={refreshTracks} style={{cursor: 'pointer'}}>
-                            refresh
                         </div>
                     </div>
                     <div className="trackMenu__items_volume">
