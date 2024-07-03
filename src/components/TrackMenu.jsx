@@ -5,6 +5,8 @@ import unMutedBtn from '../images/controls/volume.png';
 import mutedBtn from '../images/controls/muted.png';
 import play from '../images/controls/play.png';
 import pause from '../images/controls/pause.png';
+import shuffle from '../images/controls/shuffle.png';
+
 
 const TrackMenu = ({tracks}) => {
 
@@ -19,6 +21,8 @@ const TrackMenu = ({tracks}) => {
     const audioRef = useRef(new Audio(tracks[currentTrack].sound)); 
 
     const [currentTime,setCurrentTime] = useState(0);
+
+    const [shuffledTracks, setShuffledTracks] = useState([...tracks]); // перемешанные треки
 
     //видео
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -113,7 +117,19 @@ const TrackMenu = ({tracks}) => {
         setIsMuted(false);
     };
 
-    //перемешивание
+    //перемешивание треков
+
+    const shuffleTracks = () => {
+        let shuffled = [...shuffledTracks];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        setShuffledTracks(shuffled);
+        setCurrentTrack(0);
+        setIsPlaying(false);
+        setIsVideoPlaying(false);
+    };
     
     return (
         <>
@@ -136,10 +152,10 @@ const TrackMenu = ({tracks}) => {
                 <div className="trackMenu__items" style={{opacity: isVideoPlaying ? '0.2' : '1'}}>
                     
                     <div className="trackMenu__items_image">
-                        {!tracks[currentTrack].video ? (
-                            <img src={tracks[currentTrack].poster} alt="track_image" style={{scale : isPlaying ? '0.85' : '1'}}/>
+                        {!shuffledTracks[currentTrack].video ? (
+                            <img src={shuffledTracks[currentTrack].poster} alt="track_image" style={{scale : isPlaying ? '0.85' : '1'}}/>
                         ) : (
-                            <img src={tracks[currentTrack].poster} alt="track_image" style={{display: isVideoPlaying ? 'none' : 'block'}}/>
+                            <img src={shuffledTracks[currentTrack].poster} alt="track_image" style={{display: isVideoPlaying ? 'none' : 'block'}}/>
                         )}                       
                     </div>
                     <div className="trackMenu__items_line">
@@ -155,8 +171,8 @@ const TrackMenu = ({tracks}) => {
                     </div>
 
                     <div className="trackMenu__items_text">
-                    <div className="trackMenu__items_text_name">{tracks[currentTrack].name}</div>
-                    <div className="trackMenu__items_text_author">{tracks[currentTrack].author}</div>
+                    <div className="trackMenu__items_text_name">{shuffledTracks[currentTrack].name}</div>
+                    <div className="trackMenu__items_text_author">{shuffledTracks[currentTrack].author}</div>
                     </div>
 
                     <div className="trackMenu__items_btns">
@@ -168,6 +184,9 @@ const TrackMenu = ({tracks}) => {
                         </div>
                         <div className="trackMenu__items_btns_next" onClick={nextTrack}>
                             <img src={next} alt="next" />
+                        </div>
+                        <div className="trackMenu__items_btns_shuffle" onClick={shuffleTracks}>
+                            <img src={shuffle} alt="shuffle" />
                         </div>
                     </div>
                     <div className="trackMenu__items_volume">
