@@ -112,6 +112,8 @@ const TrackMenu = ({tracks}) => {
         };
     };
 
+    console.log('1');
+
     const MuteVolume = () => {
         setVolume(audioRef.current.volume = 0);
         setIsMuted(false);
